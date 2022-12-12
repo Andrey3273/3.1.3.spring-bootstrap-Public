@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "/")
 public class AdminController {
     private final UserService userService;
     private final RoleService roleService;
@@ -23,7 +23,7 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-    @GetMapping()
+    @GetMapping(value = "/admin")
     public String listUsers(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("allUsers", userService.getAllUsers());
         model.addAttribute("roles", roleService.getAllRoles());
