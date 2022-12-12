@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/admin")
 public class AdminController {
     private final UserService userService;
     private final RoleService roleService;
@@ -23,7 +23,7 @@ public class AdminController {
         this.roleService = roleService;
     }
 
-    @GetMapping(value = "/admin")
+    @GetMapping
     public String listUsers(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("allUsers", userService.getAllUsers());
         model.addAttribute("roles", roleService.getAllRoles());
@@ -31,14 +31,14 @@ public class AdminController {
         return "all-user";
     }
 
-    @GetMapping(value = "/admin/new")
+    @GetMapping(value = "new")
     public String newUser(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("roles", roleService.getAllRoles());
         return "info";
     }
 
-    @PostMapping(value = "/admin/add-user")
+    @PostMapping(value = "/add-user")
     public String addUser(@ModelAttribute User user, @RequestParam(value = "checkBoxRoles") String[] checkBoxRoles) {
         Set<Role> roleSet = new HashSet<>();
         for (String role : checkBoxRoles) {
@@ -47,10 +47,5 @@ public class AdminController {
         user.setRoles(roleSet);
         userService.addUser(user);
         return "redirect:/admin";
-    }
-
-    @GetMapping(value = "/login")
-    public String login() {
-        return "login";
     }
 }
