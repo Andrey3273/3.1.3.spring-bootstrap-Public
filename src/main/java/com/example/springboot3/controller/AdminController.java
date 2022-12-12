@@ -13,7 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/admin")
 public class AdminController {
     private final UserService userService;
     private final RoleService roleService;
