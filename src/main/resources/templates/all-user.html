@@ -12,7 +12,7 @@
 
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <span class="navbar-brand" th:text="${user.email} + ' with roles: ' + ${user.getRoles()}"></span>
+        <span class="navbar-brand" th:text="${user.email} + ' with roles: ' + ${user.getRolesToString()}"></span>
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
@@ -67,7 +67,7 @@
                             <td th:text="${user.id}">Id</td>
                             <td th:text="${user.username}">name</td>
                             <td th:text="${user.email}">Email</td>
-                            <td th:text="${user.roles}">Role</td>
+                            <td th:text="${user.getRolesToString()}">Role</td>
                             <td>
                                 <button class="btn btn-info edit-btn"
                                         data-toggle="modal"

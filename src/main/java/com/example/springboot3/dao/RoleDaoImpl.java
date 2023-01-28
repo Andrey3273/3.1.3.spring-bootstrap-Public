@@ -31,7 +31,7 @@ public class RoleDaoImpl implements RoleDao {
     }
 
     @Override
-    public List<Role> getAllRoles() {
+    public List getAllRoles() {
         return entityManager.createQuery("from Role").getResultList();
     }
 

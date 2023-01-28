@@ -14,7 +14,7 @@
     <span>
     <span class="navbar-brand font-weight-bold" th:text="${user.email}"></span>
     <span class="navbar-brand"
-          th:text="'with roles: ' + ${user.roles}"></span>
+          th:text="'with roles: ' + ${user.getRolesToString()}"></span>
     </span>
     <ul class="navbar-nav">
         <li class="nav-item">
@@ -51,7 +51,7 @@
                     <td th:text="${user.id}">Id</td>
                     <td th:text="${user.username}">Name</td>
                     <td th:text="${user.email}">Email</td>
-                    <td th:text="${user.roles}">Role</td>
+                    <td th:text="${user.getRolesToString()}">Role</td>
                 </tr>
                 </tbody>
             </table>

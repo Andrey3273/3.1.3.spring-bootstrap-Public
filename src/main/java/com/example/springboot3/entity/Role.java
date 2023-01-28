@@ -3,7 +3,7 @@ package com.example.springboot3.entity;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.Objects;
 
 @Entity
 @Table(name = "role")
@@ -13,7 +13,8 @@ public class Role implements GrantedAuthority {
     private Long id;
     private String name;
 
-    public Role() { }
+    public Role() {
+    }
 
     public Role(String name) {
         this.name = name;
@@ -38,5 +39,9 @@ public class Role implements GrantedAuthority {
     @Override
     public String getAuthority() {
         return getName();
+    }
+
+    public String getRoleName() {
+        return name.substring("ROLE_".length());
     }
 }
